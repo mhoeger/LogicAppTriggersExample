@@ -9,6 +9,16 @@ namespace LogicAppTriggers.Controllers
     public class PollTriggerController : ApiController
     {
         /// <summary>
+        /// Fire all triggers - do a GET to this API to fire all triggers subscribed
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("/trigger/api/polltrigger")]
+        public async Task<HttpResponseMessage> Get()
+        {
+            return Get();
+        }
+    
+        /// <summary>
         /// Sample polling trigger that will fire whenever the last time it fired was more than 2 minutes ago.
         /// </summary>
         /// <param name="triggerState"></param>
