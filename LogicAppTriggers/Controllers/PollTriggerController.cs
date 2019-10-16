@@ -23,7 +23,10 @@ namespace LogicAppTriggers.Controllers
                 /// This is commonly a "timestamp", and you would check on each poll if there are any items available after the timestamp.
                 ///
                 triggerState = DateTime.UtcNow.ToString();
-                return GenerateAsyncResponse(HttpStatusCode.Accepted, triggerState, "15");
+                HttpResponseMessage responseMessage = Request.CreateResponse(HttpStatusCode.Accepted);
+                responseMessage.Content = new StringContent("Triggered here!");
+                return responseMessage;
+                // return GenerateAsyncResponse(HttpStatusCode.Accepted, triggerState, "15");
             }
             //If there is a triggerState - meaning we have polled before and returned a location header in the if branch above.
             else
