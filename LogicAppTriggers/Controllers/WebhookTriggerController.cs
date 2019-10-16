@@ -26,7 +26,18 @@ namespace LogicAppTriggers.Controllers
             responseMessage.Headers.Add("location", String.Format("{0}://{1}/api/webhooktrigger/unsubscribe", Request.RequestUri.Scheme, Request.RequestUri.Host));  //Where the engine will poll to check status
             return responseMessage;
         }
-
+        
+        /// <summary>
+        /// Fire all triggers - do a GET to this API to fire all triggers subscribed
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("/trigger/api/polltrigger")]
+        public HttpResponseMessage GetTrigger()
+        {
+            HttpResponseMessage responseMessage = Request.CreateResponse(HttpStatusCode.Accepted);
+            responseMessage.Content = new StringContent("Triggered here!");
+            return responseMessage;
+        }
 
         /// <summary>
         /// Fire all triggers - do a GET to this API to fire all triggers subscribed
