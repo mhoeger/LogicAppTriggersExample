@@ -13,9 +13,11 @@ namespace LogicAppTriggers.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet, Route("/trigger/api/polltrigger")]
-        public async Task<HttpResponseMessage> Get()
+        public HttpResponseMessage GetTrigger()
         {
-            return Get();
+            HttpResponseMessage responseMessage = Request.CreateResponse(HttpStatusCode.Accepted);
+            responseMessage.Content = new StringContent("Triggered here!");
+            return responseMessage;
         }
     
         /// <summary>
