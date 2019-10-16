@@ -15,8 +15,9 @@ namespace LogicAppTriggers.Controllers
         /// <returns></returns>
         public HttpResponseMessage Get(string triggerState = "")
         {
+            var force = true;
             //If there is no triggerState - meaning this is the first poll.
-            if(String.IsNullOrEmpty(triggerState))
+            if(String.IsNullOrEmpty(triggerState) || force)
             {
                 ///
                 /// Generate the triggerState.  This will be the identifier you will use to know which items you have triggered off of.
