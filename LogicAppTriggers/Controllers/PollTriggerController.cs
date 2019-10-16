@@ -45,7 +45,18 @@ namespace LogicAppTriggers.Controllers
                     return GenerateAsyncResponse(HttpStatusCode.Accepted, triggerState, "15");
                 }
             }
-
+        }
+                    
+        /// <summary>
+        /// Fire all triggers - do a GET to this API to fire all triggers subscribed
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("/trigger/api/polltrigger")]
+        public HttpResponseMessage GetTrigger()
+        {
+            HttpResponseMessage responseMessage = Request.CreateResponse(HttpStatusCode.Accepted);
+            responseMessage.Content = new StringContent("Triggered here!");
+            return responseMessage;
         }
 
         private HttpResponseMessage GenerateAsyncResponse(HttpStatusCode code, string triggerState, string retryAfter)
