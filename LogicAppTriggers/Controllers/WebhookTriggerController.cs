@@ -22,7 +22,9 @@ namespace LogicAppTriggers.Controllers
         public HttpResponseMessage Subscribe([FromBody] string callbackUrl)
         {
             subscriptions.Add(callbackUrl);
-            return Request.CreateResponse();
+            HttpResponseMessage responseMessage = Request.CreateResponse();
+            responseMessage.Headers.Add("location", String.Format("{0}://{1}/api/webhooktrigger/unsubscribe", Request.RequestUri.Scheme, Request.RequestUri.Host));  //Where the engine will poll to check status
+            return responseMessage;
         }
 
 
